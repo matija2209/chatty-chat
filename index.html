@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot demo</title>
+    <style>
+        /* Chatbot */
+        #chat-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+
+        #chat-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #close-button {
+            color: black;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+            position: absolute;
+            right: 15px;
+            top: 10px;
+        }
+
+        #chat-iframe {
+            display: none;
+            width: 40vh; /* Full width on small screens */
+            height: 80vh; /* 80% of the screen height */
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        @media (min-width: 768px) {
+            /* For larger screens, we use fixed dimensions */
+            #chat-iframe {
+                width: 400px;
+                height: 600px;
+            }
+        }
+    </style>
+     <style>
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1682685795557-976f03aca7b2?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Replace with your image URL */
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        p {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div>
+            <h1>Welcome to Our Carpenter Business</h1>
+            <p>Quality craftsmanship for all your woodworking needs</p>
+        </div>
+    </div>
+    <div id="chat-container">
+        <button id="chat-button">💬</button>
+        <iframe id="chat-iframe" src="http://localhost:3000/" frameborder="0"></iframe>
+        <button id="close-button">X</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#chat-button').click(function() {
+                $('#chat-iframe').show();
+                $('#close-button').show();
+                $(this).hide();
+            });
+
+            $('#close-button').click(function() {
+                $('#chat-iframe').hide();
+                $('#chat-button').show();
+                $(this).hide();
+            });
+        });
+    </script>
+</body>
+</html>
